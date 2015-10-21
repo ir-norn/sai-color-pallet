@@ -66,7 +66,7 @@ end
 #
 # todo this GetPixel_rb function Hex 6 moji return
 # now 6 moji ika return
-# but "000044" is "44" 
+# but "000044" is "44"
 #
 def GetPixel_rb x , y
   GetPixel.call( TmpDC , x , y ).to_s(16).split(/(..)/).reverse.join
@@ -123,7 +123,7 @@ end
 # ----- sai pallet img save -----------------------
 $debug_mode = false   ;;puts $debug_mode && "debug_mode"
 #
-save = -> do  
+save = -> do
   ini = IniFile.load('C:/soft/SAI_c/misc.ini')
   size = ini["Swatch"]["Size"]
   rows = ini["Swatch"]["Rows"]
@@ -139,11 +139,11 @@ save = -> do
       y = init_y  + (size / 2) + (size * b)
       [ x , y ]
     end end.flatten.each_slice(2).to_a
-  
+
   colors =
   v.map do | x , y |
     SetCursorPos.call x , y
-    sleep 0.01    
+    sleep 0.01
     if (c = GetPixel_rb( x , y )) == "f0f0f0"
        if GetPixel_rb( x-2, y+2 ) == "e0e0e0"
         next
@@ -215,16 +215,16 @@ rep = -> do
   xy =
   300.times do | i |
     if GetPixel_rb( xy[0] + img_cell_size/2 , xy[1] + i ) != "0"
-      break p [ xy[0]  , xy[1] + i ] 
+      break p [ xy[0]  , xy[1] + i ]
     end end
   init_x = xy[0]
   init_y = xy[1]
 
-  vv = 
+  vv =
   cols.times.map do | a |
     rows.times.map do | b |
-      x = init_x + (size / 2) + (size * a)
-      y = init_y + (size / 2) + (size * b)
+      x = init_x + (img_cell_size / 2) + (img_cell_size * a)
+      y = init_y + (img_cell_size / 2) + (img_cell_size * b)
       [ x , y ]
     end end.flatten.each_slice(2).to_a
  # p vv
@@ -244,7 +244,7 @@ rep = -> do
   vv_tmp = vv.clone
   v.map do | x , y |
     img_x , img_y = vv_tmp.shift
-    SetCursorPos.call img_x , img_y 
+    SetCursorPos.call img_x , img_y
     sleep 0.1 ; click :right # not active window __ todo
     sleep 0.1 ; click :right
 
@@ -259,6 +259,7 @@ rep = -> do
     # replace
     SetCursorPos.call x , y
     sleep 0.1 ; click :right
+    sleep 0.2 ; wsh.Sendkeys("{DOWN}")
     sleep 0.2 ; wsh.Sendkeys("{DOWN}")
     sleep 0.2 ; wsh.Sendkeys("{DOWN}")
     sleep 0.2 ; wsh.Sendkeys("{ENTER}")
