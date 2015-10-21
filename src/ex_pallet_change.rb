@@ -92,16 +92,6 @@ end
 # ShowHSB   = 1      ; 水平スクロールバーを表示するかどうか (0=表示しない 1=表示する)
 # ShowVSB   = 1      ; 垂直スクロールバーを表示するかどうか (0=表示しない 1=表示する)
 #
-#
-# ini = IniFile.load('C:/soft/SAI_c/misc.ini')
-# Size = ini["Swatch"]["Size"]
-# Rows = ini["Swatch"]["Rows"]
-# Cols = ini["Swatch"]["Cols"]
-# puts "Size #{Size}"
-# puts "Rows #{Rows}"
-# puts "Cols #{Cols}"
-# (puts "ini file load error" ; exit) if not ini
-#
 # photo shop x , y ## memo
 # 1 33
 #  19 51
@@ -116,9 +106,6 @@ end
 #  5. ruby sai_pallet_change.rb dump
 #
 #  パレットコピーの sai_color.bmp が生成されれば成功
-#
-#
-#
 #
 # ----- sai pallet img save -----------------------
 $debug_mode = false   ;;puts $debug_mode && "debug_mode"
@@ -175,7 +162,6 @@ save = -> do
     end
   end
 end
-
 #
 #  手順 replace
 #
@@ -186,13 +172,8 @@ end
 #  5. ruby sai_pallet_change.rb replace
 #  6. マウスとキーボードによるマクロ処理が行われるので処理終わるまでpc放置
 #
-#
-#
 # ----- sai pallet replace  -----------------------
-
-
 rep = -> do
-# sai sbsolute
   ini = IniFile.load('C:/soft/SAI_c/misc.ini')
   size = ini["Swatch"]["Size"]
   rows = ini["Swatch"]["Rows"]
@@ -200,9 +181,6 @@ rep = -> do
   cols = rows = 5 if $debug_mode
   # open img no size to padding ni awaseru
   img_cell_size = 19 - 1 + ( pad = 2 ) # .img colors absolute & size
-#  rows = 25
-#  cols = 10
-#  puts ".img Size #{size} _ Rows #{rows} _ Cols #{cols}"
   xy =
   Screen_h.times.each do | i |
     if GetPixel_rb( Screen_w / 2 , 0 + i )  == "0"
@@ -260,7 +238,6 @@ rep = -> do
     # replace
     SetCursorPos.call x , y
     sleep 0.1 ; click :right
-    sleep 0.2 ; wsh.Sendkeys("{DOWN}")
     sleep 0.2 ; wsh.Sendkeys("{DOWN}")
     sleep 0.2 ; wsh.Sendkeys("{DOWN}")
     sleep 0.2 ; wsh.Sendkeys("{ENTER}")
