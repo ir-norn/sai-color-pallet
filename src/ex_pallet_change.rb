@@ -198,6 +198,7 @@ rep = -> do
   rows = ini["Swatch"]["Rows"]
   cols = ini["Swatch"]["Cols"]
   cols = rows = 5 if $debug_mode
+  # open img no size to padding ni awaseru
   img_cell_size = 19 - 1 + ( pad = 2 ) # .img colors absolute & size
 #  rows = 25
 #  cols = 10
