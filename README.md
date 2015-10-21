@@ -1,1 +1,1 @@
-## sai-color-palletsaiのカラーパレットを保存 ＆ 引き継ぐ事を目的としたスクリプト製作のリポジトリです現段階ではWinAPIとRubyを使ったマクロで実装してるだけ
+# sai-color-palletsaiのカラーパレットを保存 ＆ 引き継ぐ事を目的としたスクリプト製作のリポジトリです現段階ではRuby使ったマクロで実装してるだけ## install lib1. `gem install inifile`2. dxruby## command list1. `ruby ex_pallet_change.rb save`2. `ruby ex_pallet_change.rb replace`### savesaiのパレットをdxrubyのウィンドウキャプチャ機能使って.bmpで保存します### replacesaiが現在開いている画像（save等で作成した画像）を読み取ってwshによってパレットを塗り替えていきます---
